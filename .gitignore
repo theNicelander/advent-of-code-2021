@@ -1,0 +1,9 @@
+# virtual env
+venv
+
+# package
+petur.egg-info
+build
+
+# pycharm
+.idea

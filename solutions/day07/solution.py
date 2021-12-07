@@ -13,14 +13,16 @@ def align_crabs_expensive(input_list: list, target_position: int) -> int:
     pass
 
 
-def part1(input_file):
-    int_list = utils.read_int_from_single_line_to_list(input_file)
+def find_crab_cost(int_list: list, cost_type: str):
     max_position = max(int_list)
 
     smallest_position = None
     smallest_movements = None
     for outcome in range(max_position):
-        outcome_movements = align_crabs_constant(int_list, outcome)
+        if cost_type == "part1":
+            outcome_movements = align_crabs_constant(int_list, outcome)
+        else:
+            outcome_movements = align_crabs_expensive(int_list, outcome)
 
         # first pass
         if (not smallest_position) or (outcome_movements < smallest_movements):
@@ -46,4 +48,7 @@ assert align_crabs_expensive(EXAMPLE_INPUT, 2) == 206, "LOL"
 
 if __name__ == "__main__":
     input_file = "input"
-    part1(input_file)
+    int_list = utils.read_int_from_single_line_to_list(input_file)
+
+    find_crab_cost(int_list, cost_type="part1")
+    find_crab_cost(int_list, cost_type="part2")

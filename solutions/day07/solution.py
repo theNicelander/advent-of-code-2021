@@ -10,7 +10,13 @@ def align_crabs_constant(input_list: list, target_position: int) -> int:
 
 
 def align_crabs_expensive(input_list: list, target_position: int) -> int:
-    pass
+    total_changes = 0
+    for crab_position in input_list:
+        diff = abs(crab_position - target_position)
+        changes = sum(range(1, diff + 1))
+        total_changes += changes
+
+    return total_changes
 
 
 def find_crab_cost(int_list: list, cost_type: str):
@@ -50,5 +56,8 @@ if __name__ == "__main__":
     input_file = "input"
     int_list = utils.read_int_from_single_line_to_list(input_file)
 
+    print("=== PART 1 ===")
     find_crab_cost(int_list, cost_type="part1")
+
+    print("=== PART 2 ===")
     find_crab_cost(int_list, cost_type="part2")

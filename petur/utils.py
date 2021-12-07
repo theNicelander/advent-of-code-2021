@@ -3,6 +3,11 @@ def read_data_into_list(path: str) -> list:
         return f.read().splitlines()
 
 
+def read_multi_line_ints_to_list(path:str)->list:
+    str_list = read_data_into_list(path)
+    return [int(num) for num in str_list]
+
+
 def read_groups_into_list(path: str) -> list:
     """
     Reads multiple lines of strings, separated by newline into a single string.
